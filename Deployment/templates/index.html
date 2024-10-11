@@ -1,0 +1,70 @@
+# templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Fare Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <img alt="Logo" class="logo">
+        <h1>Flight Fare Prediction</h1>
+    </header>
+    
+    <main>
+        <form action="/predict" method="post">
+            <label for="airline">Airline:</label>
+            <input type="text" id="airline" name="airline" required value="{{ airline }}">
+            
+            <label for="source">Source:</label>
+            <input type="text" id="source" name="source" required value="{{ source }}">
+            
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" required value="{{ destination }}">
+            
+            <label for="total_stops">Total Stops:</label>
+            <input type="number" id="total_stops" name="total_stops" required value="{{ total_stops }}">
+            
+            <label for="journey_day">Journey Day:</label>
+            <input type="number" id="journey_day" name="journey_day" required value="{{ journey_day }}">
+            
+            <label for="journey_month">Journey Month:</label>
+            <input type="number" id="journey_month" name="journey_month" required value="{{ journey_month }}">
+            
+            <label for="dep_hour">Departure Hour:</label>
+            <input type="number" id="dep_hour" name="dep_hour" required value="{{ dep_hour }}">
+            
+            <label for="dep_min">Departure Minute:</label>
+            <input type="number" id="dep_min" name="dep_min" required value="{{ dep_min }}">
+            
+            <label for="arrival_hour">Arrival Hour:</label>
+            <input type="number" id="arrival_hour" name="arrival_hour" required value="{{ arrival_hour }}">
+            
+            <label for="arrival_min">Arrival Minute:</label>
+            <input type="number" id="arrival_min" name="arrival_min" required value="{{ arrival_min }}">
+            
+            <label for="duration_hours">Duration Hours:</label>
+            <input type="number" id="duration_hours" name="duration_hours" required value="{{ duration_hours }}">
+            
+            <label for="duration_mins">Duration Minutes:</label>
+            <input type="number" id="duration_mins" name="duration_mins" required value="{{ duration_mins }}">
+            
+            <button type="submit">Predict Fare</button>
+        </form>
+        
+        {% if prediction %}
+        <div class="prediction">
+            <h2>{{ prediction }}</h2>
+        </div>
+        {% endif %}
+        
+        <button onclick="location.href='/preload'" class="preload-btn">Preload Sample Data</button>
+    </main>
+    
+    <footer>
+        <p>Created by Dalia Refaat | Dataset from www.rpubs.com/LXY_23054201/1136559</p>
+    </footer>
+</body>
+</html>
